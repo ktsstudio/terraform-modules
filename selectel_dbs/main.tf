@@ -1,10 +1,15 @@
+data "vault_generic_secret" "db_creds" {
+  count = length(var.databases)
+  path  = "${var.vault_db_creds_key}/${var.databases[count.index].name}"
+}
+
 resource "selectel_dbaas_user_v1" "db_user" {
   count        = length(var.databases)
   project_id   = var.project_id
   region       = var.region
   datastore_id = var.datastore_id
-  name         = var.databases[count.index].user
-  password     = var.databases[count.index].password
+  name         = data.vault_generic_secret.db_creds[count.index].data["user"]
+  password     = data.vault_generic_secret.db_creds[count.index].data["password"]
 }
 
 resource "selectel_dbaas_database_v1" "database_1" {
