@@ -11,13 +11,12 @@ variable "datastore_id" {
 }
 
 variable "databases" {
-  type = list(object({
-    name       = string
+  type = map(object({
     lc_ctype   = string
     lc_collate = string
   }))
 
-  default = []
+  default = {}
 }
 
 variable "vault_db_creds_key" {
