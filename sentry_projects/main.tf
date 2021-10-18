@@ -1,7 +1,7 @@
 resource "sentry_project" "project" {
   for_each     = var.projects
   organization = var.organization
-  team         = var.team
+  team         = each.value.team
   name         = each.key
   slug         = each.key
   platform     = each.value.platform

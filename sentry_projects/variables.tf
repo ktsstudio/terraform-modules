@@ -1,5 +1,6 @@
 variable "projects" {
   type = map(object({
+    team        = string
     platform    = optional(string)
     resolve_age = optional(number)
   }))
@@ -8,9 +9,5 @@ variable "projects" {
 }
 
 variable "organization" {
-  type = string
-}
-
-variable "team" {
   type = string
 }
