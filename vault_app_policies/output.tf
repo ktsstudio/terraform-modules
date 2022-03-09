@@ -10,6 +10,18 @@ output "prod_ro" {
   })
 }
 
+output "stage_rw" {
+  value = tomap({
+    for k, _ in var.teams : k => vault_policy.apps_stage_rw[k].name
+  })
+}
+
+output "stage_ro" {
+  value = tomap({
+    for k, _ in var.teams : k => vault_policy.apps_stage_ro[k].name
+  })
+}
+
 output "dev_rw" {
   value = tomap({
     for k, _ in var.teams : k => vault_policy.apps_dev_rw[k].name
