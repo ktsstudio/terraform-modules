@@ -19,7 +19,8 @@ resource "vault_generic_secret" "credentials" {
   data_json = <<EOT
 {
   "${var.vault_credentials_username_attr}": "${mongodb_db_user.user.name}",
-  "${var.vault_credentials_password_attr}": "${random_password.password.result}"
+  "${var.vault_credentials_password_attr}": "${random_password.password.result}",
+  "${var.vault_credentials_db_attr}": "${var.name}"
 }
 EOT
 }
