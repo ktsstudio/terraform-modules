@@ -5,7 +5,7 @@ resource "vault_policy" "apps_dev_rw" {
   policy = <<EOT
     path "${var.apps_dev_prefix}/${each.key}/*"
     {
-      capabilities = ["read", "create", "update", "list", "delete"]
+      capabilities = ["read", "create", "update", "list", "delete", "sudo"]
     }
   EOT
 }
@@ -29,7 +29,7 @@ resource "vault_policy" "apps_stage_rw" {
   policy = <<EOT
     path "${var.apps_stage_prefix}/${each.key}/*"
     {
-      capabilities = ["read", "create", "update", "list", "delete"]
+      capabilities = ["read", "create", "update", "list", "delete", "sudo"]
     }
   EOT
 }
@@ -53,7 +53,7 @@ resource "vault_policy" "apps_prod_rw" {
   policy = <<EOT
     path "${var.apps_prod_prefix}/${each.key}/*"
     {
-      capabilities = ["read", "create", "update", "list", "delete"]
+      capabilities = ["read", "create", "update", "list", "delete", "sudo"]
     }
   EOT
 }
