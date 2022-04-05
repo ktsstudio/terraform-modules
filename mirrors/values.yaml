@@ -1,0 +1,30 @@
+installCRDs: true
+replicaCount: 1
+
+serviceAccount:
+  create: true
+
+rbac:
+  create: true
+  viewerRole: true
+  editorRole: true
+
+rbacProxy:
+  enabled: true
+
+resources:
+  limits:
+    cpu: 150m
+    memory: 250Mi
+  requests:
+    cpu: 5m
+    memory: 100Mi
+
+webhooks:
+  enabled: true
+  cert:
+    certmanager:
+      enabled: true
+
+serviceMonitor:
+  enabled: false
