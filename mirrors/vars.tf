@@ -18,8 +18,7 @@ variable "chart_name" {
 }
 
 variable "chart_version" {
-  type    = string
-  default = "0.1.4"
+  type = string
 }
 
 variable "values" {
