@@ -23,5 +23,5 @@ variable "chart_version" {
 
 variable "values" {
   type    = string
-  default = "values.yaml"
+  default = ""
 }

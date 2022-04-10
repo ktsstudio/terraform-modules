@@ -8,6 +8,7 @@ resource "helm_release" "mirrors" {
   wait       = true
 
   values = [
-    templatefile("${path.module}/values.yaml", {})
+    templatefile("${path.module}/values.yaml", {}),
+    var.values
   ]
 }
