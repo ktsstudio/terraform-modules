@@ -1,6 +1,5 @@
 variable "teams" {
   type = map(object({
-
   }))
 
   default = {}
