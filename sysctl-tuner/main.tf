@@ -20,6 +20,23 @@ resource "kubernetes_daemonset" "sysctl-tuner" {
         }
       }
       spec {
+        toleration {
+          key      = "node-role.kubernetes.io/master"
+          operator = "Exists"
+          effect   = "NoSchedule"
+        }
+
+        toleration {
+          key      = "node-role.kubernetes.io/control-plane"
+          operator = "Exists"
+          effect   = "NoSchedule"
+        }
+
+        toleration {
+          operator = "Exists"
+          effect   = "NoSchedule"
+        }
+
         container {
           name              = "sysctl-tuner"
           image             = "busybox"
