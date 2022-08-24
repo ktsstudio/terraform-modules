@@ -22,6 +22,8 @@ EOT
 resource "yandex_storage_bucket" "bucket" {
   bucket = var.name
 
+  default_storage_class = var.default_storage_class
+
   grant {
     id          = yandex_iam_service_account.sa.id
     type        = "CanonicalUser"
