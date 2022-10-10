@@ -7,6 +7,6 @@ variable "vault-path" {
 }
 
 variable "default_storage_class" {
-  type = string
-  default = "COLD"
+  type    = string
+  default = "STANDARD"
 }
