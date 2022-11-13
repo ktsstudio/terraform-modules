@@ -1,0 +1,5 @@
+server:
+  enabled: false
+  config:
+    ui:
+      enabled: false
