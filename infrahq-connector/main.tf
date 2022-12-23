@@ -8,17 +8,22 @@ resource "helm_release" "infra-connector" {
   wait       = true
 
   set {
-    name  = "connector.config.server"
+    name  = "replicas"
+    value = var.replicas
+  }
+
+  set {
+    name  = "config.server.url"
     value = var.infra_server
   }
 
   set_sensitive {
-    name  = "connector.config.accessKey"
+    name  = "config.accessKey"
     value = var.infra_access_key
   }
 
   set {
-    name  = "connector.config.name"
+    name  = "config.name"
     value = var.infra_connector_name
   }
 

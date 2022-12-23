@@ -9,7 +9,7 @@ variable "name" {
 
 variable "chart_repo" {
   type    = string
-  default = "https://helm.infrahq.com"
+  default = "https://infrahq.github.io/helm-charts"
 }
 
 variable "chart_name" {
@@ -37,4 +37,9 @@ variable "infra_access_key" {
 
 variable "infra_connector_name" {
   type = string
+}
+
+variable "replicas" {
+  type    = number
+  default = 2
 }

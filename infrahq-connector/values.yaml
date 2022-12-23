@@ -1,5 +1,1 @@
-server:
-  enabled: false
-  config:
-    ui:
-      enabled: false
+nameOverride: infra-connector
