@@ -31,7 +31,3 @@ resource "selectel_dbaas_database_v1" "db" {
   lc_ctype     = var.lc_ctype
   lc_collate   = var.lc_collate
 }
-
-output "database_id" {
-  value = selectel_dbaas_database_v1.db.id
-}
