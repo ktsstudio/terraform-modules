@@ -14,7 +14,8 @@ resource "vault_generic_secret" "keys" {
 {
   "bucket": "${var.name}",
   "access_key": "${yandex_iam_service_account_static_access_key.sa-static-key.access_key}",
-  "secret_key": "${yandex_iam_service_account_static_access_key.sa-static-key.secret_key}"
+  "secret_key": "${yandex_iam_service_account_static_access_key.sa-static-key.secret_key}",
+  "endpoint_url": "${var.endpoint_url}"
 }
 EOT
 }
