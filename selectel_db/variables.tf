@@ -30,10 +30,15 @@ variable "vault_credentials_key" {
 
 variable "vault_credentials_username_attr" {
   type    = string
-  default = "pg_username"
+  default = "username"
 }
 
 variable "vault_credentials_password_attr" {
   type    = string
-  default = "pg_password"
+  default = "password"
+}
+
+variable "vault_credentials_db_attr" {
+  type    = string
+  default = "db"
 }
