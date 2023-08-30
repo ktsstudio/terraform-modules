@@ -1,1 +1,9 @@
 nameOverride: infra-connector
+
+resources:
+  requests:
+    memory: 80Mi
+    cpu: "50m"
+  limits:
+    memory: 300Mi
+    cpu: "500m"
