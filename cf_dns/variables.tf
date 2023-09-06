@@ -2,6 +2,10 @@ variable "zone" {
   type = string
 }
 
+variable "account_id" {
+  type = string
+}
+
 variable "A" {
   type = map(object({
     name    = string

@@ -1,7 +1,8 @@
 # provider "cloudflare" {}
 
 resource "cloudflare_zone" "zone" {
-  zone = var.zone
+  account_id = var.account_id
+  zone       = var.zone
 }
 
 resource "cloudflare_record" "A_record" {
