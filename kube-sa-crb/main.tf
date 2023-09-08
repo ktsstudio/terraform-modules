@@ -6,7 +6,7 @@ resource "kubernetes_service_account" "service_account" {
   automount_service_account_token = false
 }
 
-resource "kubernetes_cluster_role_binding" "crb" {
+resource "kubernetes_cluster_role_binding_v1" "crb" {
   metadata {
     name = var.name
   }
