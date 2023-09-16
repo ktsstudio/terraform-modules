@@ -37,9 +37,16 @@ resource "kubernetes_daemonset" "sysctl-tuner" {
           effect   = "NoSchedule"
         }
 
+        dynamic "image_pull_secrets" {
+          for_each = var.image_prefix_pull_secret != "" ? toset([var.image_prefix_pull_secret]) : toset([])
+          content {
+            name = var.image_prefix_pull_secret
+          }
+        }
+
         container {
           name              = "sysctl-tuner"
-          image             = "busybox"
+          image             = "${var.image_prefix}busybox"
           image_pull_policy = "Always"
           command = [
             "sh",
