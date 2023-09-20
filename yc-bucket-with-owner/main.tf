@@ -25,6 +25,8 @@ resource "yandex_storage_bucket" "bucket" {
 
   default_storage_class = var.default_storage_class
 
+  tags = var.tags
+
   grant {
     id          = yandex_iam_service_account.sa.id
     type        = "CanonicalUser"

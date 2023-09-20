@@ -51,3 +51,9 @@ variable "cors_max_age_seconds" {
   default     = 0
   description = "Max age of cors in seconds"
 }
+
+variable "tags" {
+  type        = map(string)
+  default     = {}
+  description = "Bucket tags"
+}
