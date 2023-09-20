@@ -73,12 +73,20 @@ resource "kubernetes_cron_job_v1" "cleanup-shutdown-pods" {
             }
           }
           spec {
+
+            dynamic "image_pull_secrets" {
+              for_each = var.image_prefix_pull_secret != "" ? toset([var.image_prefix_pull_secret]) : toset([])
+              content {
+                name = var.image_prefix_pull_secret
+              }
+            }
+
             service_account_name = kubernetes_service_account_v1.cleanup-shutdown-pods.metadata[0].name
             container {
               name    = local.common_name
-              image   = "bitnami/kubectl"
+              image   = "${var.image_prefix}bitnami/kubectl"
               command = ["/bin/sh"]
-              args    = ["-c", "kubectl get po --all-namespaces | grep -E 'Shutdown|Evicted' | awk '{print \"kubectl -n \"$1\" delete po \"$2\" --ignore-not-found=true\"}' | xargs -P8 -I{} sh -c '{}'"]
+              args    = ["-c", "kubectl get po --all-namespaces | grep -E 'Shutdown|Evicted|Terminated' | awk '{print \"kubectl -n \"$1\" delete po \"$2\" --ignore-not-found=true\"}' | xargs -P8 -I{} sh -c '{}'"]
             }
           }
         }
