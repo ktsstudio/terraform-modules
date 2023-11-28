@@ -7,8 +7,7 @@ resource "helm_release" "mirrors" {
   version    = var.chart_version
   wait       = true
 
-  values = [
+  values = concat([
     templatefile("${path.module}/values.yaml", {}),
-    var.values
-  ]
+  ], var.values)
 }

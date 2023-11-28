@@ -22,8 +22,8 @@ variable "chart_version" {
 }
 
 variable "values" {
-  type    = string
-  default = ""
+  type    = list(string)
+  default = []
 }
 
 variable "infra_server" {

@@ -27,8 +27,7 @@ resource "helm_release" "infra-connector" {
     value = var.infra_connector_name
   }
 
-  values = [
+  values = concat([
     templatefile("${path.module}/values.yaml", {}),
-    var.values
-  ]
+  ], var.values)
 }
