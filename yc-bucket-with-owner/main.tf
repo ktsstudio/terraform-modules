@@ -21,11 +21,9 @@ EOT
 }
 
 resource "yandex_storage_bucket" "bucket" {
-  bucket = var.name
-
+  bucket                = var.name
   default_storage_class = var.default_storage_class
-
-  tags = var.tags
+  tags                  = var.tags
 
   grant {
     id          = yandex_iam_service_account.sa.id
