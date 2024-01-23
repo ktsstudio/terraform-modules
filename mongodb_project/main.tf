@@ -14,7 +14,8 @@ resource "mongodb_db_user" "user" {
 }
 
 resource "vault_generic_secret" "credentials" {
-  path = var.vault_credentials_key
+  path                = var.vault_credentials_key
+  delete_all_versions = true
 
   data_json = <<EOT
 {

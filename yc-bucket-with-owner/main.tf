@@ -8,7 +8,8 @@ resource "yandex_iam_service_account_static_access_key" "sa-static-key" {
 }
 
 resource "vault_generic_secret" "keys" {
-  path = var.vault-path
+  path                = var.vault-path
+  delete_all_versions = true
 
   data_json = <<EOT
 {
