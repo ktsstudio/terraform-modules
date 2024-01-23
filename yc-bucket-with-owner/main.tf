@@ -13,10 +13,11 @@ resource "vault_generic_secret" "keys" {
 
   data_json = <<EOT
 {
-  "bucket": "${var.name}",
-  "access_key": "${yandex_iam_service_account_static_access_key.sa-static-key.access_key}",
-  "secret_key": "${yandex_iam_service_account_static_access_key.sa-static-key.secret_key}",
-  "endpoint_url": "${var.endpoint_url}"
+  "${var.vault_key_bucket}": "${var.name}",
+  "${var.vault_key_access_key}": "${yandex_iam_service_account_static_access_key.sa-static-key.access_key}",
+  "${var.vault_key_secret_key}": "${yandex_iam_service_account_static_access_key.sa-static-key.secret_key}",
+  "${var.vault_key_endpoint_url}": "${var.endpoint_url}",
+  "${var.vault_key_region}": "${var.region}"
 }
 EOT
 }

@@ -16,6 +16,11 @@ variable "endpoint_url" {
   default = "https://storage.yandexcloud.net"
 }
 
+variable "region" {
+  type    = string
+  default = "ru-central1"
+}
+
 variable "cors_enabled" {
   type        = bool
   default     = false
@@ -56,4 +61,29 @@ variable "tags" {
   type        = map(string)
   default     = {}
   description = "Bucket tags"
+}
+
+variable "vault_key_bucket" {
+  type    = string
+  default = "bucket"
+}
+
+variable "vault_key_endpoint_url" {
+  type    = string
+  default = "endpoint_url"
+}
+
+variable "vault_key_access_key" {
+  type    = string
+  default = "access_key"
+}
+
+variable "vault_key_secret_key" {
+  type    = string
+  default = "secret_key"
+}
+
+variable "vault_key_region" {
+  type    = string
+  default = "region"
 }
