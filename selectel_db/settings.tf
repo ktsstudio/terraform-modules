@@ -1,12 +1,10 @@
 terraform {
   required_providers {
     selectel = {
-      source  = "selectel/selectel"
-      version = "3.11.0"
+      source = "selectel/selectel"
     }
     vault = {
-      source  = "hashicorp/vault"
-      version = ">= 2.22.1"
+      source = "hashicorp/vault"
     }
   }
 }
