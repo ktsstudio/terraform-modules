@@ -1,3 +1,7 @@
+output "service-account-id" {
+  value = yandex_iam_service_account.sa.id
+}
+
 output "access-key" {
   value = yandex_iam_service_account_static_access_key.sa-static-key.access_key
 }
