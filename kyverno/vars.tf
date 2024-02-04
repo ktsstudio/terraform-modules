@@ -34,7 +34,7 @@ variable "policy_reporter_chart_name" {
 
 variable "policy_reporter_chart_version" {
   type    = string
-  default = "2.21.6"
+  default = "2.22.0"
 }
 
 variable "policy_reporter_values" {
