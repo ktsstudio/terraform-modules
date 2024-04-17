@@ -17,6 +17,9 @@ resource "vault_generic_secret" "credentials" {
 
   data_json = <<EOT
 {
+  "${var.vault_credentials_master_host_attr}": "master.${var.datastore_id}.c.dbaas.selcloud.ru",
+  "${var.vault_credentials_port_attr}": "5433",
+  "${var.vault_credentials_port_direct_attr}": "5432",
   "${var.vault_credentials_username_attr}": "${var.name}",
   "${var.vault_credentials_password_attr}": "${random_password.password.result}",
   "${var.vault_credentials_db_attr}": "${var.name}"

@@ -28,6 +28,21 @@ variable "vault_credentials_key" {
   type = string
 }
 
+variable "vault_credentials_master_host_attr" {
+  type    = string
+  default = "host"
+}
+
+variable "vault_credentials_port_attr" {
+  type    = string
+  default = "port"
+}
+
+variable "vault_credentials_port_direct_attr" {
+  type    = string
+  default = "port_direct"
+}
+
 variable "vault_credentials_username_attr" {
   type    = string
   default = "username"
