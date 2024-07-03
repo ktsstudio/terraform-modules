@@ -29,13 +29,7 @@ variable "cors_rules" {
     expose_headers  = list(string)
     max_age_seconds = number
   }))
-  default = {
-    allowed_headers = []
-    allowed_methods = []
-    allowed_origins = []
-    expose_headers  = []
-    max_age_seconds = 0
-  }
+  default = []
 }
 
 variable "tags" {
