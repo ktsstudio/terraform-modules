@@ -12,7 +12,7 @@ resource "cloudflare_record" "A_record" {
   type     = "A"
   ttl      = each.value.ttl
   proxied  = each.value.proxied
-  value    = each.value.value
+  content  = each.value.value
 }
 
 resource "cloudflare_record" "AAAA_record" {
@@ -22,7 +22,7 @@ resource "cloudflare_record" "AAAA_record" {
   type     = "AAAA"
   ttl      = each.value.ttl
   proxied  = each.value.proxied
-  value    = each.value.value
+  content  = each.value.value
 }
 
 resource "cloudflare_record" "CNAME_record" {
@@ -32,7 +32,7 @@ resource "cloudflare_record" "CNAME_record" {
   type     = "CNAME"
   ttl      = each.value.ttl
   proxied  = each.value.proxied
-  value    = each.value.value
+  content  = each.value.value
 }
 
 resource "cloudflare_record" "TXT_record" {
@@ -41,7 +41,7 @@ resource "cloudflare_record" "TXT_record" {
   name     = each.value.name
   type     = "TXT"
   ttl      = each.value.ttl
-  value    = each.value.value
+  content  = each.value.value
 }
 
 resource "cloudflare_record" "MX_record" {
@@ -50,8 +50,14 @@ resource "cloudflare_record" "MX_record" {
   name     = each.value.name
   type     = "MX"
   ttl      = each.value.ttl
-  value    = each.value.value
+  content  = each.value.value
   priority = each.value.priority
+
+  lifecycle {
+    ignore_changes = [
+      data,
+    ]
+  }
 }
 
 resource "cloudflare_record" "NS_record" {
@@ -60,5 +66,5 @@ resource "cloudflare_record" "NS_record" {
   name     = each.value.name
   type     = "NS"
   ttl      = each.value.ttl
-  value    = each.value.value
+  content  = each.value.value
 }
