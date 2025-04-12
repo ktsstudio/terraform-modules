@@ -62,3 +62,13 @@ variable "vault_key_region" {
   type    = string
   default = "region"
 }
+
+variable "delete_incomplete_multipart_upload_days_enabled" {
+  type    = bool
+  default = false
+}
+
+variable "delete_incomplete_multipart_upload_days" {
+  type    = number
+  default = 7
+}

@@ -45,4 +45,10 @@ resource "yandex_storage_bucket" "bucket" {
       max_age_seconds = cors_rule.value.max_age_seconds
     }
   }
+
+  lifecycle_rule {
+    abort_incomplete_multipart_upload_days = var.delete_incomplete_multipart_upload_days
+    enabled                                = var.delete_incomplete_multipart_upload_days_enabled
+    id                                     = "удаление незавершенных загрузок"
+  }
 }

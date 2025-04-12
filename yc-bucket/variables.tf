@@ -58,3 +58,13 @@ variable "tags" {
   default     = {}
   description = "Bucket tags"
 }
+
+variable "delete_incomplete_multipart_upload_days_enabled" {
+  type    = bool
+  default = false
+}
+
+variable "delete_incomplete_multipart_upload_days" {
+  type    = number
+  default = 7
+}
