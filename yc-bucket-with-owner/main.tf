@@ -51,4 +51,18 @@ resource "yandex_storage_bucket" "bucket" {
     enabled                                = var.delete_incomplete_multipart_upload_days_enabled
     id                                     = "удаление незавершенных загрузок"
   }
+
+  dynamic "lifecycle_rule" {
+    for_each = var.enable_expiration_rule ? [1] : []
+
+    content {
+      id      = "everything"
+      prefix  = ""
+      enabled = true
+
+      expiration {
+        days = var.expiration_days
+      }
+    }
+  }
 }

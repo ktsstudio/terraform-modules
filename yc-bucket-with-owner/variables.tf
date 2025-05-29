@@ -72,3 +72,15 @@ variable "delete_incomplete_multipart_upload_days" {
   type    = number
   default = 7
 }
+
+variable "enable_expiration_rule" {
+  description = "Включить правило удаления объектов через expiration"
+  type        = bool
+  default     = false
+}
+
+variable "expiration_days" {
+  description = "Сколько дней до удаления объектов"
+  type        = number
+  default     = 90
+}
