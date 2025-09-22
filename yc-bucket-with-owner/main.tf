@@ -33,6 +33,16 @@ resource "yandex_storage_bucket" "bucket" {
     permissions = ["READ", "WRITE"]
   }
 
+  dynamic "grant" {
+    for_each = var.public_access ? [1] : []
+
+    content {
+      type        = "Group"
+      permissions = ["READ"]
+      uri         = "http://acs.amazonaws.com/groups/global/AllUsers"
+    }
+  }
+
 
   dynamic "cors_rule" {
     for_each = var.cors_rules
