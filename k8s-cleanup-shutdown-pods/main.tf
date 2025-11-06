@@ -84,7 +84,7 @@ resource "kubernetes_cron_job_v1" "cleanup-shutdown-pods" {
             service_account_name = kubernetes_service_account_v1.cleanup-shutdown-pods.metadata[0].name
             container {
               name    = local.common_name
-              image   = "${var.image_prefix}bitnami/kubectl"
+              image   = "${var.image_prefix}alpine/kubectl"
               command = ["/bin/sh"]
               args    = ["-c", "kubectl get po --all-namespaces | grep -E 'Shutdown|Evicted|Terminate|ContainerStatusUnknown|Error|Completed' | awk '{print \"kubectl -n \"$1\" delete po \"$2\" --ignore-not-found=true\"}' | xargs -P8 -I{} sh -c '{}'"]
             }
