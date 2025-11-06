@@ -90,3 +90,14 @@ variable "expiration_days" {
   type        = number
   default     = 90
 }
+
+
+variable "lifecycle_transition_rules" {
+  type = list(object({
+    enabled       = bool
+    name          = string
+    days          = number
+    storage_class = string
+  }))
+  default = []
+}

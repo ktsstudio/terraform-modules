@@ -61,7 +61,6 @@ resource "yandex_storage_bucket" "bucket" {
     enabled                                = var.delete_incomplete_multipart_upload_days_enabled
     id                                     = "удаление незавершенных загрузок"
   }
-
   dynamic "lifecycle_rule" {
     for_each = var.enable_expiration_rule ? [1] : []
 
@@ -72,6 +71,19 @@ resource "yandex_storage_bucket" "bucket" {
 
       expiration {
         days = var.expiration_days
+      }
+    }
+  }
+
+  dynamic "lifecycle_rule" {
+    for_each = var.lifecycle_transition_rules
+
+    content {
+      id      = lifecycle_rule.value.name
+      enabled = lifecycle_rule.value.enabled
+      transition {
+        days          = lifecycle_rule.value.days
+        storage_class = lifecycle_rule.value.storage_class
       }
     }
   }
