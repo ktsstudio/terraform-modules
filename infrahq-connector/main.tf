@@ -7,25 +7,27 @@ resource "helm_release" "infra-connector" {
   version    = var.chart_version
   wait       = true
 
-  set {
-    name  = "replicas"
-    value = var.replicas
-  }
+  set = [
+    {
+      name  = "replicas"
+      value = tostring(var.replicas)
+    },
+    {
+      name  = "config.server.url"
+      value = var.infra_server
+    },
+    {
+      name  = "config.name"
+      value = var.infra_connector_name
+    }
+  ]
 
-  set {
-    name  = "config.server.url"
-    value = var.infra_server
-  }
-
-  set_sensitive {
-    name  = "config.accessKey"
-    value = var.infra_access_key
-  }
-
-  set {
-    name  = "config.name"
-    value = var.infra_connector_name
-  }
+  set_sensitive = [
+    {
+      name  = "config.accessKey"
+      value = var.infra_access_key
+    }
+  ]
 
   values = concat([
     templatefile("${path.module}/values.yaml", {}),
