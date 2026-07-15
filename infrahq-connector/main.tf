@@ -5,7 +5,7 @@ resource "helm_release" "infra-connector" {
   repository = var.chart_repo
   chart      = var.chart_name
   version    = var.chart_version
-  wait       = true
+  wait       = false
 
   set = [
     {
