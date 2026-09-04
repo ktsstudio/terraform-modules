@@ -22,3 +22,14 @@ resource "yandex_storage_bucket" "bucket" {
     id                                     = "удаление незавершенных загрузок"
   }
 }
+
+resource "yandex_storage_bucket_iam_binding" "iam" {
+  for_each = {
+    for role, members in var.iam_bindings : role => members
+    if length(members) > 0
+  }
+
+  bucket  = yandex_storage_bucket.bucket.bucket
+  role    = each.key
+  members = each.value
+}

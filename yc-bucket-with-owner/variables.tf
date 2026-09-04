@@ -2,6 +2,12 @@ variable "name" {
   type = string
 }
 
+variable "iam_bindings" {
+  type        = map(set(string))
+  default     = {}
+  description = "Map of IAM roles to member identities granted on the bucket (for example, userAccount:<id> or group:<id>)"
+}
+
 variable "vault-path" {
   type = string
 }
